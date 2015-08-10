@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0; }
 
-@media (max-width: 48em) {
+@media (max-width: 47.9em) {
   body {
     background-color: #f3f3f4; } }
 /*body {
@@ -60,7 +60,7 @@ p {
 article *:last-child {
   margin-bottom: 0; }
 
-@media (max-width: 48em) {
+@media (max-width: 47.9em) {
   article *:first-child {
     margin-top: 0; } }
 strong {
@@ -276,7 +276,7 @@ a.sidebar-nav-item:active {
   max-width: 95%;
   background-color: white; }
 
-@media (max-width: 48em) {
+@media (max-width: 47.9em) {
   .content {
     padding-top: 1em;
     padding-bottom: 1em;
@@ -350,7 +350,7 @@ h1.logo {
     margin-left: -2px !important;
     line-height: 85px; } }
 /* remove logo from sidebar in small screens */
-@media (max-width: 48em) {
+@media (max-width: 47.9em) {
   .sidebar h1.logo {
     display: none; } }
 /* Logo Links ==================================*/
