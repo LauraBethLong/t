@@ -1,0 +1,403 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0; }
+
+@media (max-width: 48em) {
+  body {
+    background-color: #f3f3f4; } }
+/*body {
+  background-color: #fff;
+}*/
+/* 4c6c9e ? better than 446e9e*/
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5; }
+
+body {
+  color: #515151;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+@media (min-width: 66em) {
+  html {
+    font-size: 20px; } }
+/* Headings  ==================================*/
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.25;
+  color: #313131;
+  text-rendering: optimizeLegibility; }
+
+h1 {
+  font-size: 1.75rem; }
+
+h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem; }
+
+h3 {
+  margin-top: 1.5rem;
+  font-size: 1.25rem; }
+
+h4, h5, h6 {
+  margin-top: 1rem;
+  font-size: 1rem; }
+
+/* Body Text  ==================================*/
+p {
+  margin-top: 0;
+  margin-bottom: 1rem; }
+
+article *:last-child {
+  margin-bottom: 0; }
+
+@media (max-width: 48em) {
+  article *:first-child {
+    margin-top: 0; } }
+strong {
+  color: #303030; }
+
+/* Links  ==================================*/
+/* No `:visited` state is required by default (browsers will use `a`) */
+a {
+  color: #446e9e;
+  text-decoration: none;
+  -webkit-transition: color 0.5s ease-in-out 0;
+  -moz-transition: color 0.5s ease-in-out 0;
+  -o-transition: color 0.5s ease-in-out 0;
+  transition: color 0.5s ease-in-out 0; }
+
+a strong {
+  color: inherit; }
+
+a:hover, a:focus {
+  text-decoration: underline; }
+
+a:active {
+  color: #5b7ea6; }
+
+/* Sidebar links */
+.sidebar a {
+  color: white; }
+
+/* Miscellaneous  ==================================*/
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #717171;
+  background-color: #f9f9f9; }
+
+/* the sidebar is always on the screen in large screens, but slides in and out on small screens */
+/* Styles here are mobile-first, as I always do. This means the styles are first set for the mobile off-screen version (making them essentially the default), and then modified for larger screens when the sidebar becomes permanently visible. */
+/* Style and "hide" the sidebar in small screens  ==================================*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -18rem;
+  width: 18rem;
+  padding: 2rem 1rem;
+  visibility: hidden;
+  overflow-y: auto;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .875rem;
+  /* 15px */
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #55789e;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+
+/* Make the sidebar permanently on-screen for larger screens  ==================================*/
+@media (min-width: 48rem) {
+  .sidebar {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 18rem;
+    visibility: visible;
+    text-align: left;
+    box-shadow: none; }
+
+  /* Sticky sidebar  ==================================*/
+  /* Add the `sidebar-sticky` class to the sidebar's container to affix the contents vertically when the sidebar is permanently on screen. It won't move when you scroll the content. */
+  .sidebar-sticky {
+    position: absolute;
+    right: 1rem;
+    top: 3.5rem;
+    left: 1rem; } }
+/* Sidebar Navigation  ==================================*/
+.sidebar-nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+
+.sidebar-nav-item {
+  display: block;
+  line-height: 1.75;
+  color: #364b63; }
+
+.sidebar-nav-item.category {
+  margin-top: 1rem; }
+
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: none;
+  color: #364b63; }
+
+a.sidebar-nav-item:active {
+  text-decoration: none;
+  color: #5b7ea6; }
+
+.sidebar-nav-item.active {
+  font-weight: bold; }
+
+.sidebar footer {
+  color: rgba(0, 0, 0, 0.35);
+  /*color: #364b63;*/
+  margin-top: 1rem; }
+
+.small {
+  font-size: 0.6rem; }
+
+/* Stuff that Has to Do With the Sliding In 'n Out  ==================================*/
+/* The Toggle Button  ==================================*/
+/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
+.sidebar-checkbox {
+  position: absolute;
+  opacity: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+
+/* Style the `label` that we use to target the `.sidebar-checkbox` */
+.sidebar-toggle {
+  position: absolute;
+  top: .8rem;
+  left: 1rem;
+  display: block;
+  padding: .25rem .75rem;
+  color: #505050;
+  background-color: #ffffff;
+  border-radius: .25rem;
+  cursor: pointer; }
+
+.sidebar-toggle:before {
+  display: inline-block;
+  width: 1rem;
+  height: .75rem;
+  content: "";
+  background-image: -webkit-linear-gradient(to top, #55789e, #55789e 20%, white 20%, white 40%, #55789e 40%, #55789e 60%, white 60%, white 80%, #55789e 80%, #55789e 100%);
+  background-image: -moz-linear-gradient(to top, #55789e, #55789e 20%, white 20%, white 40%, #55789e 40%, #55789e 60%, white 60%, white 80%, #55789e 80%, #55789e 100%);
+  background-image: -ms-linear-gradient(to top, #55789e, #55789e 20%, white 20%, white 40%, #55789e 40%, #55789e 60%, white 60%, white 80%, #55789e 80%, #55789e 100%);
+  background-image: linear-gradient(to top, #55789e, #55789e 20%, white 20%, white 40%, #55789e 40%, #55789e 60%, white 60%, white 80%, #55789e 80%, #55789e 100%); }
+
+.sidebar-toggle:active,
+#sidebar-checkbox:focus ~ .sidebar-toggle,
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  color: #55789e;
+  background-color: #55789e; }
+
+.sidebar-toggle:active:before,
+#sidebar-checkbox:focus ~ .sidebar-toggle:before,
+#sidebar-checkbox:checked ~ .sidebar-toggle:before {
+  background-image: -webkit-linear-gradient(to bottom, white, white 20%, #55789e 20%, #55789e 40%, white 40%, white 60%, #55789e 60%, #55789e 80%, white 80%, white 100%);
+  background-image: -moz-linear-gradient(to bottom, white, white 20%, #55789e 20%, #55789e 40%, white 40%, white 60%, #55789e 60%, #55789e 80%, white 80%, white 100%);
+  background-image: -ms-linear-gradient(to bottom, white, white 20%, #55789e 20%, #55789e 40%, white 40%, white 60%, #55789e 60%, #55789e 80%, white 80%, white 100%);
+  background-image: linear-gradient(to bottom, white, white 20%, #55789e 20%, #55789e 40%, white 40%, white 60%, #55789e 60%, #55789e 80%, white 80%, white 100%); }
+
+@media (min-width: 30.1em) {
+  .sidebar-toggle {
+    /*position: fixed;*/ } }
+/* Remove the toggle button in print and on large screens where it isn't applicable ==================================*/
+@media print, (min-width: 48em) {
+  .sidebar-toggle {
+    display: none; } }
+/* The Slide Effect ==================================*/
+/* Handle the sliding effects of the sidebar and content in one spot, seperate
+ * from the default styles.
+ *
+ * As an a heads up, we don't use `transform: translate3d()` here because when
+ * mixed with `position: fixed;` for the sidebar toggle, it creates a new
+ * containing block. Put simply, the fixed sidebar toggle behaves like
+ * `position: absolute;` when transformed.
+ *
+ * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.
+ */
+.wrap,
+.sidebar,
+.sidebar-toggle {
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.wrap,
+.sidebar-toggle {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out; }
+
+#sidebar-checkbox:checked + .sidebar {
+  z-index: 10;
+  visibility: visible; }
+
+#sidebar-checkbox:checked ~ .sidebar,
+#sidebar-checkbox:checked ~ .wrap,
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  -webkit-transform: translateX(18rem);
+  -ms-transform: translateX(18rem);
+  transform: translateX(18rem); }
+
+/* Wrapper  ==================================*/
+/* .wrap slides the content over when the sidebar slides in */
+.wrap {
+  position: relative;
+  width: 100%; }
+
+/* Container  ==================================*/
+/* Align the page content */
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto; }
+
+.content {
+  max-width: 95%;
+  background-color: white; }
+
+@media (max-width: 48em) {
+  .content {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1em; } }
+@media (min-width: 48em) {
+  .content {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    max-width: 35rem;
+    margin-left: 20rem;
+    margin-right: 2rem; } }
+@media (min-width: 64em) {
+  .content {
+    margin-left: 22rem;
+    margin-right: 4rem; } }
+/* the masthead is the small banner at the top of the page on small screens with the site name and menu button */
+.masthead {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15); }
+
+/* Title Text  ==================================*/
+.masthead-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center; }
+
+/* Remove masthead on larger screens  ==================================*/
+@media (min-width: 48em) {
+  .masthead {
+    display: none; } }
+/* The Design of 'Laura Beth Long' for both large and small screens ==================================*/
+/* There are two separate instances of 'Laura Beth Long', one for large screens in the sidebar that only shows when the sidbar is permanently displayed on large screens, and one for small screens in the masthead. Both sets of text use the same tages and classes: the text is an h1 with the "logo" class. */
+h1.logo {
+  margin-top: 0;
+  font-family: "sofia_prolight", serif, "Futura", "Futura LT BT", "Century Gothic", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.4rem; }
+
+/* different colors for "Laura Beth" and "Long" */
+.laura-beth {
+  color: #55789e; }
+
+.long {
+  color: #364b63; }
+
+/* styles for larger screens with permanent sidebar */
+@media (min-width: 48em) {
+  .laura-beth {
+    display: block;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: -0.02em;
+    font-size: 42px;
+    margin-left: 0px !important;
+    line-height: 52.5px; }
+
+  .long {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-size: 72px;
+    color: #364b63;
+    margin-top: -10px;
+    margin-left: -2px !important;
+    line-height: 85px; } }
+/* remove logo from sidebar in small screens */
+@media (max-width: 48em) {
+  .sidebar h1.logo {
+    display: none; } }
+/* Logo Links ==================================*/
+/* It would be underlined on hover, focus, and active without this. */
+.logo a:hover, a:focus, a:active {
+  text-decoration: none; }
+
+.logo a:active {
+  color: #5b7ea6; }
+
+/* change the color of 'laura beth' when any portion of the logo is hovered or focused */
+.logo a:hover .laura-beth, .logo a:focus .laura-beth {
+  color: #364b63; }
+
+/*Styling for Rates Blocks on 'Hire Me' page ==================================*/
+div.section.group.rates_blocks {
+  margin: 1em 0 1em 0; }
+
+div.rates_blocks div.col.span_1_of_4 {
+  text-align: center;
+  background-color: #f3f3f4;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+
+.number_of_hours {
+  display: block;
+  margin: 0.5em;
+  font-weight: bold; }
+
+.rates_blocks a {
+  display: block;
+  margin: 0.5em;
+  background-color: #446E9E;
+  border-bottom: 0 none;
+  padding: 0.35em;
+  color: #fff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  -moz-transition: background-color 0.5s ease-in-out;
+  -o-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out; }
+
+.rates_blocks a:focus, .rates_blocks a:hover {
+  background-color: #325276; }
+
+.rates_blocks a:active {
+  background-color: #000; }
